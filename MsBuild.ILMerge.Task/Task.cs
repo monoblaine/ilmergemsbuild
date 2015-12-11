@@ -29,6 +29,8 @@
 */
 #endregion
 
+using System.Runtime.Versioning;
+
 namespace MSBuild.ILMerge
 {
     using System;
@@ -151,7 +153,7 @@ namespace MSBuild.ILMerge
 
         /// <summary>
         /// Gets or sets a value indicating whether, if the <see cref="CopyAttributes"/> is also set, 
-        /// any assembly-level attributes names that have the same type are copied over into the target directory
+        /// any assembly-level attributes names that have the same type are copied over into the target assembly
         /// as long as the definition of the attribute type specifies that <b>AllowMultiple</b> is true.
         /// </summary>
         public virtual bool AllowMultipleAssemblyLevelAttributes { get; set; }
@@ -727,9 +729,38 @@ namespace MSBuild.ILMerge
             }
         }
 
+        private FrameworkName GetTargetFrameworkName(TargetDotNetFrameworkVersion version)
+        {
+            switch (version)
+            {
+                case  TargetDotNetFrameworkVersion.Version11:
+                    return new FrameworkName(".NET Framework, Version=1.1");
+                case TargetDotNetFrameworkVersion.Version20:
+                    return new FrameworkName(".NET Framework, Version=2.0");
+                case TargetDotNetFrameworkVersion.Version30:
+                    return new FrameworkName(".NET Framework, Version=3.0");
+                case TargetDotNetFrameworkVersion.Version35:
+                    return new FrameworkName(".NET Framework, Version=3.5");
+                default:
+                    return new FrameworkName(".NET Framework, Version=4.0");
+
+            }
+        }
+
         private string GetTargetPlatformDirectory(string value)
         {
-            return ToolLocationHelper.GetPathToDotNetFramework(this.GetTargetPlatform(this.TargetPlatform));
+            // see http://www.hurryupandwait.io/blog/what-you-should-know-about-running-ilmerge-on-net-4-5-assemblies-targeting-net-4-0
+            // about why it doesn't pass the correct Platform Directory when targeting .NET 4.0 and running under VS2015 
+            // or using the Roslyn compiler with .NET 4.5 (reported by ianclegg)
+            ////return ToolLocationHelper.GetPathToDotNetFramework(this.GetTargetPlatform(this.TargetPlatform));
+
+            var fn = this.GetTargetFrameworkName(this.GetTargetPlatform(this.TargetPlatform));
+            Log.LogMessage("GetTargetFrameworkName=" + fn);
+            var dirs = ToolLocationHelper.GetPathToReferenceAssemblies(fn);
+            Log.LogMessage("GetPathToReferenceAssemblies=" + string.Join(";", dirs));
+            if (dirs.Count == 0)
+                return ToolLocationHelper.GetPathToDotNetFramework(this.GetTargetPlatform(this.TargetPlatform));
+            return dirs[0];
         }
 
         #region everyone looking for ILMerge...
@@ -784,7 +815,7 @@ namespace MSBuild.ILMerge
                 .Where(s =>
                 {
                     s = Path.GetFileName(s);
-                    // ignore all package like ILMerge.Bla.Bla.Bla.1.2.3.4
+                    // ignore all packages like ILMerge.Bla.Bla.Bla.1.2.3.4
                     string[] parts = s.Split('.');
                     int n;
                     return parts.Length == 1 || int.TryParse(parts[1], out n);
