@@ -15,6 +15,9 @@
     <ILMergeDelaySign Condition=" $(ILMergeDelaySign) == '' ">false</ILMergeDelaySign>
     <ILMergeFileAlignment Condition=" $(ILMergeFileAlignment) == '' ">512</ILMergeFileAlignment>
     <ILMergeInternalize Condition=" $(ILMergeInternalize) == '' ">false</ILMergeInternalize>
+    <ILMergeInternalizeExcludeFile Condition=" $(ILMergeInternalizeExcludeFile) == '' ">$(MSBuildProjectDir)ILMergeInternalizeExcludeList.txt</ILMergeInternalizeExcludeFile>
+
+
     <ILMergeXmlDocumentation Condition=" $(ILMergeXmlDocumentation) == '' ">false</ILMergeXmlDocumentation>
     <ILMergePublicKeyTokens Condition=" $(ILMergePublicKeyTokens) == '' ">true</ILMergePublicKeyTokens>
     <ILMergeShouldLog Condition=" $(ILMergeShouldLog) == '' ">true</ILMergeShouldLog>
@@ -78,6 +81,7 @@
     <Message Text="Libraries in: $(ILMergeLibraryPath)" Importance="normal" />
     <Message Text="Packages in: $(ILMergePackagesPath)" Importance="normal" />
     <Message Text="Merge order file: $(ILMergeOrderFile)" Importance="normal" />
+    <Message Text="Internalization enabled: $(ILMergeInternalize)" Importance="normal" />
     <Message Text="Local content: @(LocalContentFiles)" Importance="low" />
 
     <!-- run ILMerge  -->
@@ -98,6 +102,7 @@
         DelaySign="$(ILMergeDelaySign)"
         FileAlignment="$(ILMergeFileAlignment)"
         Internalize="$(ILMergeInternalize)"
+        InternalizeExcludeFile ="$(ILMergeInternalizeExcludeFile)"
         XmlDocumentation="$(ILMergeXmlDocumentation)"
         PublicKeyTokens="$(ILMergePublicKeyTokens)"               
         ShouldLog="$(ILMergeShouldLog)"
