@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MSBuild.ILMerge.Task</id>
-    <version>1.0.5-rc1</version>
+    <version>1.0.5-rc2</version>
     <title>MSBuild ILMerge task</title>
     <authors>Alexander Nosenko</authors>
     <owners>Alexander Nosenko</owners>
@@ -21,8 +21,8 @@
 
       ILMerge.exe is not included into this package because its license prohibits redistribution. Referencing it as package dependency and loading it from its package location ensures that the latest ILMerge version is always used.
     </description>
-    <releaseNotes>Supports transitive merge and all ILMerge command-line parameters. Safe to use with VS2015/Roslyn.</releaseNotes>
-    <copyright>Copyright 2013-2015 Alexander Nosenko</copyright>
+    <releaseNotes>Supports transitive merge and all ILMerge command-line parameters (including InternalizeExcludeFile). Safe to use with VS2015/Roslyn.</releaseNotes>
+    <copyright>Copyright 2013-2016 Alexander Nosenko</copyright>
     <tags>MSBuild ILMerge</tags>
     <dependencies>
       <dependency id="ilmerge" version="2.13.0307" />
