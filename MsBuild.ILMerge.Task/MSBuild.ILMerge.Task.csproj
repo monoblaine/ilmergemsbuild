@@ -70,6 +70,7 @@
     <None Include="package.cmd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\ILMergeInternalizeExcludeList.txt" />
     <Content Include="content\ILMergeOrder.txt" />
     <Content Include="Icon.png" />
     <Content Include="License.txt" />
