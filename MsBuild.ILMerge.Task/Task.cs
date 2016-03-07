@@ -51,7 +51,7 @@ namespace MSBuild.ILMerge
     /// Also, calling ILMerge from a batch file is sometimes hindered by the limitation on the total length of the command line...
     /// </summary>
     /// <remarks>
-    /// See http://sedodream.com/PermaLink,guid,020fd1af-fb17-4fc9-8336-877c157eb2b4.aspxILMergeInternalize
+    /// See http://sedodream.com/PermaLink,guid,020fd1af-fb17-4fc9-8336-877c157eb2b4.aspx
     /// why we don't really know the project directory so you better make sure all paths are absolute.
     /// </remarks>
     public class Task : Microsoft.Build.Utilities.Task
@@ -474,7 +474,7 @@ namespace MSBuild.ILMerge
                     ? path
                     : Path.GetDirectoryName(path);
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
                 // fake directories etc can have funny names
                 return null;

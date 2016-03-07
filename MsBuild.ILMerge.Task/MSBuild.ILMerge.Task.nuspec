@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MSBuild.ILMerge.Task</id>
-    <version>1.0.5-rc2</version>
+    <version>1.0.5</version>
     <title>MSBuild ILMerge task</title>
     <authors>Alexander Nosenko</authors>
     <owners>Alexander Nosenko</owners>

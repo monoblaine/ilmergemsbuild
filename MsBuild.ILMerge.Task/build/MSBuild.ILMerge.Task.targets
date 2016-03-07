@@ -16,8 +16,6 @@
     <ILMergeFileAlignment Condition=" $(ILMergeFileAlignment) == '' ">512</ILMergeFileAlignment>
     <ILMergeInternalize Condition=" $(ILMergeInternalize) == '' ">false</ILMergeInternalize>
     <ILMergeInternalizeExcludeFile Condition=" $(ILMergeInternalizeExcludeFile) == '' ">$(MSBuildProjectDir)ILMergeInternalizeExcludeList.txt</ILMergeInternalizeExcludeFile>
-
-
     <ILMergeXmlDocumentation Condition=" $(ILMergeXmlDocumentation) == '' ">false</ILMergeXmlDocumentation>
     <ILMergePublicKeyTokens Condition=" $(ILMergePublicKeyTokens) == '' ">true</ILMergePublicKeyTokens>
     <ILMergeShouldLog Condition=" $(ILMergeShouldLog) == '' ">true</ILMergeShouldLog>

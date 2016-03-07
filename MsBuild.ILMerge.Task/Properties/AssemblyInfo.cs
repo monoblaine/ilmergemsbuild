@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Alexander Nosenko")]
 [assembly: AssemblyProduct("MSBuild.ILMerge.Task")]
-[assembly: AssemblyCopyright("Copyright © 2013-2015 Alexander Nosenko")]
+[assembly: AssemblyCopyright("Copyright © 2013-2016 Alexander Nosenko")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("en-US")]
 
@@ -23,4 +23,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("972f0471-99ce-4939-b259-bb3c85a43f91")]
 [assembly: AssemblyVersion("1.0.5.0")]
 [assembly: AssemblyFileVersion("1.0.5.0")]
-[assembly: AssemblyInformationalVersion("1.0.5-rc1")]
+[assembly: AssemblyInformationalVersion("1.0.5")]
