@@ -4,10 +4,10 @@
     <!-- give project-specific settings reasonable defaults -->
     <ILMergePackagesPath Condition=" $(ILMergePackagePath) == '' ">$(SolutionDir)packages</ILMergePackagesPath>
     <ILMergeOrderFile Condition=" $(ILMergeOrderFile) == '' ">$(MSBuildProjectDir)ILMergeOrder.txt</ILMergeOrderFile>
-    <ILMergeKeyFile Condition=" $(ILMergeKeyFile) == '' ">$(KeyOriginatorFile)</ILMergeKeyFile>
+    <ILMergeKeyFile Condition=" $(ILMergeKeyFile) == '' ">$(AssemblyOriginatorKeyFile)</ILMergeKeyFile>
     <ILMergeAssemblyVersion Condition=" $(ILMergeAssemblyVersion) == '' "></ILMergeAssemblyVersion>
 
-    <ILMergeAllowDuplicateType Condition=" $(ILMergeAllowDuplicateType) == '' ">false</ILMergeAllowDuplicateType>
+    <ILMergeAllowDuplicateType Condition=" $(ILMergeAllowDuplicateType) == '' "></ILMergeAllowDuplicateType>
     <ILMergeAllowMultipleAssemblyLevelAttributes Condition=" $(ILMergeAllowMultipleAssemblyLevelAttributes) == '' ">false</ILMergeAllowMultipleAssemblyLevelAttributes>
     <ILMergeAllowZeroPeKind Condition=" $(ILMergeAllowZeroPeKind) == '' ">false</ILMergeAllowZeroPeKind>
     <ILMergeCopyAttributes Condition=" $(ILMergeCopyAttributes) == '' ">false</ILMergeCopyAttributes>
@@ -15,7 +15,7 @@
     <ILMergeDelaySign Condition=" $(ILMergeDelaySign) == '' ">false</ILMergeDelaySign>
     <ILMergeFileAlignment Condition=" $(ILMergeFileAlignment) == '' ">512</ILMergeFileAlignment>
     <ILMergeInternalize Condition=" $(ILMergeInternalize) == '' ">false</ILMergeInternalize>
-    <ILMergeInternalizeExcludeFile Condition=" $(ILMergeInternalizeExcludeFile) == '' ">$(MSBuildProjectDir)ILMergeInternalizeExcludeList.txt</ILMergeInternalizeExcludeFile>
+    <ILMergeInternalizeExcludeFile Condition=" $(ILMergeInternalizeExcludeFile) == '' "></ILMergeInternalizeExcludeFile>
     <ILMergeXmlDocumentation Condition=" $(ILMergeXmlDocumentation) == '' ">false</ILMergeXmlDocumentation>
     <ILMergePublicKeyTokens Condition=" $(ILMergePublicKeyTokens) == '' ">true</ILMergePublicKeyTokens>
     <ILMergeShouldLog Condition=" $(ILMergeShouldLog) == '' ">true</ILMergeShouldLog>

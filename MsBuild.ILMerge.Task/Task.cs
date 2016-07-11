@@ -322,9 +322,10 @@ namespace MSBuild.ILMerge
             merger.CopyAttributes = this.CopyAttributes;
             merger.DebugInfo = this.DebugInfo;
             merger.DelaySign = this.DelaySign;
-            merger.ExcludeFile = this.BuildPath(this.InternalizeExcludeFile);
             merger.FileAlignment = this.FileAlignment > 0 ? this.FileAlignment : 512;
             merger.Internalize = this.Internalize;
+            if (this.Internalize)
+                merger.ExcludeFile = this.BuildPath(this.InternalizeExcludeFile);
             if (!string.IsNullOrEmpty(this.KeyFile))
                 merger.KeyFile = this.BuildPath(this.KeyFile);
             merger.Log = this.ShouldLog;
