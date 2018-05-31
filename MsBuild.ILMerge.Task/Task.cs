@@ -698,7 +698,7 @@ namespace MSBuild.ILMerge
             if (string.IsNullOrWhiteSpace(value))
                 return TargetDotNetFrameworkVersion.VersionLatest;
 
-            value = Regex.Replace(value, "[^.0-9]", string.Empty);
+            value = Regex.Replace(value.Split(',')[0], "[^.0-9]", string.Empty);
             int n;
             if (int.TryParse(value, out n))
             {
@@ -754,6 +754,12 @@ namespace MSBuild.ILMerge
             // about why it doesn't pass the correct Platform Directory when targeting .NET 4.0 and running under VS2015 
             // or using the Roslyn compiler with .NET 4.5 (reported by ianclegg)
             ////return ToolLocationHelper.GetPathToDotNetFramework(this.GetTargetPlatform(this.TargetPlatform));
+
+            var maybePlatformAndDirectoryPair = this.TargetPlatform.Split(',');
+
+            if (maybePlatformAndDirectoryPair.Length > 1) {
+                return maybePlatformAndDirectoryPair[1];
+            }
 
             var fn = this.GetTargetFrameworkName(this.GetTargetPlatform(this.TargetPlatform));
             Log.LogMessage("GetTargetFrameworkName=" + fn);
